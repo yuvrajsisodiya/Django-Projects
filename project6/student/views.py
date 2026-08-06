@@ -13,6 +13,11 @@ def course_detail(req,**kwargs):
     c_code = kwargs.get("c_code")
     c_name = kwargs.get("c_name")
     
-    return HttpResponse(f"Course Code : {c_code}<br>Course Name : {c_name}")
+    return HttpResponse(f"<h1>Course Code : {c_code}<br>Course Name : {c_name}</h1>")
 def pass_year(req,year):
     return HttpResponse(f"<h1>Passing Year : {year}</h1>")
+def cube(req,radius):
+    area=3.141*radius*radius
+    return HttpResponse(f"area of circle is : {area}")    
+
+
