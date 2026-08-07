@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <h1>Student Details</h1> -->
+    <!-- <p>Id : {{id | add:12}}</p>
+    <p>Name : {{name | title}}</p>
+    <p>Course : {{course | upper}}</p>
+    <p>City : {{city | title}}</p>
+    <p>Age : {{age | add:5}}</p> -->
+
+    <!-- <p>ID : {{id}}</p>
+    <p>Name : {{name}}</p>
+    <p>Age : {{age}}</p>
+    <p>College : {{colloge}}</p> -->
+
+    <!-- <h1>Course Details</h1> -->
+    <!-- <p>Computer Science</p>
+    <p>Course name : {{C_name}}</p>
+    <p>Major : {{Major}}</p>
+    <p>Dse I : {{Dse}}</p>
+    <p>Vocational : {{Vocational | title}}</p>
+    <p>Intership : {{Intership | title}}</p> -->
+    <div style="border: 2px solid black; width: 400px; height: 200px; margin: 20px; padding: 10px; justify-content: center; flex-direction: column; align-items: center;">
+    <h3>Item Details</h3>
+    <p>Name : {{I_name }}</p>
+    <p>Price : {{I_price | add:1000}}</p>
+    <p>Rating : {{I_rating }}</p>
+    <img src="{{I_image}}" alt="Image" width="180" height="130" style="border: 1px solid black; margin-top: 10px; position: relative; left: 200px; bottom: 135px;">
+    </div>
+
+    <div style="border: 2px solid black; width: 400px; height: 200px; margin: 20px; padding: 10px; justify-content: center; flex-direction: column; align-items: center;">
+    <h3>Item Details</h3>
+    <p>Name : {{I_name | upper}}</p>
+    <p>Price : {{I_price | add:2100}}</p>
+    <p>Rating : {{I_rating | floatformat:1}} {{I_rating | add:0.5}}</p>
+    <img src="{{I_image}}" alt="Image" width="180" height="130" style="border: 1px solid black; margin-top: 10px; position: relative; left: 200px; bottom: 135px;">
+    </div>
+    
+
+
+
+</body>
+</html>
