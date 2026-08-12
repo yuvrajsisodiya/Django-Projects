@@ -25,24 +25,75 @@
     <p>Dse I : {{Dse}}</p>
     <p>Vocational : {{Vocational | title}}</p>
     <p>Intership : {{Intership | title}}</p> -->
-    <div style="border: 2px solid black; width: 400px; height: 200px; margin: 20px; padding: 10px; justify-content: center; flex-direction: column; align-items: center;">
-    <h3>Item Details</h3>
-    <p>Name : {{I_name }}</p>
-    <p>Price : {{I_price | add:1000}}</p>
-    <p>Rating : {{I_rating }}</p>
-    <img src="{{I_image}}" alt="Image" width="180" height="130" style="border: 1px solid black; margin-top: 10px; position: relative; left: 200px; bottom: 135px;">
-    </div>
+    <!-- item details -->
 
-    <div style="border: 2px solid black; width: 400px; height: 200px; margin: 20px; padding: 10px; justify-content: center; flex-direction: column; align-items: center;">
+
+    <!-- <div style="border: 2px solid black; width: 400px; height: 200px; margin: 20px; padding: 10px; justify-content: center; flex-direction: column; align-items: center;">
+    <h3>Item Details</h3>
+    <p>Name : {{I_name | title}}</p>
+    <p>Price : ₹{{I_price | add:1000 }}</p>
+    <p>Rating : {{I_rating | floatformat:1}}</p>
+    <img src="{{I_image}}" alt="Image" width="180" height="130" style="border: 1px solid rgb(29, 35, 194); margin-top: 10px; position: relative; left: 200px; bottom: 135px; ">
+    </div> -->
+
+
+    <!-- <div style="border: 2px solid black; width: 400px; height: 200px; margin: 20px; padding: 10px; justify-content: center; flex-direction: column; align-items: center;">
     <h3>Item Details</h3>
     <p>Name : {{I_name | upper}}</p>
     <p>Price : {{I_price | add:2100}}</p>
     <p>Rating : {{I_rating | floatformat:1}} {{I_rating | add:0.5}}</p>
     <img src="{{I_image}}" alt="Image" width="180" height="130" style="border: 1px solid black; margin-top: 10px; position: relative; left: 200px; bottom: 135px;">
-    </div>
+    </div> -->
     
 
 
+<h1>Student Details</h1>
+<p>Name : {{name}}</p>
+<p>ID : {{id}}</p>
+<p>Age : {{age}}</p>    
+<p>Course : {{course}}</p>
+<p>City : {{city}}</p>
+<p>Subjects : {{subjects}}</p>
+<p>Subject : {{subjects.0 | title}}</p>
+<p>Subject first char print only : {{subjects.1 | first}}</p> <!-- first character print only-->
+<p>Subject last char print only : {{subjects.2 | last}}</p> <!-- last character print only-->
+<p>Subjects Join : {{subjects | join:","}}</p>
 
+<p>Subjects length : {{subjects | length}}</p>
+
+<p>Marks : {{marks}}</p> <!-- marks list print -->
+<p>Marks hindi : {{marks.hindi | add:5}}</p>
+<p>Marks english : {{marks.english | add:7}}</p>
+<p>Marks maths : {{marks.maths}}</p>
+
+<p>Sum : {{sum}}</p>
+<p>my sum : {{mysum |default:"Not available"}}</p>
+<p>Introduction : {{intro | truncatewords:5}}</p>
+<p>Message : {{msg | safe}}</p>
+
+{% comment %}
+multi line 
+comment
+{% endcomment %}
+{# single line comment #}
+
+{% autoescape off %}
+<h1>MY Tag</h1>
+<p>with autoescape : {{msg}}</p>
+{% endautoescape %}
+<p>without autoescape : {{msg}}</p>
+
+<!-- if -->
+<!-- {% if 20|divisibleby:2 %}
+<p>20 is divisible by 2</p>
+{% endif %} -->
+
+<!-- if else -->
+ <h1>if else statement</h1>
+{% if 20|divisibleby:3 %}
+<p>20 is divisible by 2</p>
+{% else %}
+<p>20 is not divisible by 3</p>
+{% endif %}
 </body>
 </html>
