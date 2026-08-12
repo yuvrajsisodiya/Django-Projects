@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- <title>base file</title> -->
+        <title>
+            {% block title %}
+            My Website
+            {% endblock %}
+        </title>
+
+    </head>
+    <body>
+        <!-- <h1>Base File</h1> -->
+        <h1 style="text-align: center;">Welcome to the Student Management System</h1>
+        {% include "student/navbar.html" %}
+        
+        {% block content %}
+        {% endblock %}
+        {% include "student/footer.html" %}
+    </body>
+</html>

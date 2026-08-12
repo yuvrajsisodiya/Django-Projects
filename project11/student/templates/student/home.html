@@ -1,0 +1,15 @@
+{% extends 'student/base.html' %}
+{% load static %}
+{% block title %}
+home
+{% endblock %}
+{% block content %}
+    <h1 style="padding: 15px;">Welcome to the Home Page</h1>
+    <p style="padding: 15px;">
+          Welcome to our website! Explore our services,
+          learn more about us, and stay connected.
+    </p>
+    <img src="{% static 'student/images/std.png' %}" alt="">
+    
+
+{% endblock %}
