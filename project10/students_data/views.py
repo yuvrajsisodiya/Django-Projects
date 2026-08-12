@@ -85,8 +85,17 @@ def std_details(request):
         'month':datetime.now().month,
         'tags':'django,python,html,css,js',
 
+    },
+    std_info={
+        'name':'yuvraj',
+        'age':20,
+        'course':'bca',
+        # 'subjects': ['math','physics','chemistry','hindi','english'],
+        # 'subjects' : None,
+        'marks':{'hindi':82,'english':54,'maths':65,'science':75,'social':80},
     }
     # return render(request,'students_data/student.html',data1)
     # return render(request,'students_data/home.html',data2)
-    return render(request,'students_data/home.html',data3)
+    # return render(request,'students_data/home.html',data3)
+    return render(request,'students_data/home.html',std_info)
     

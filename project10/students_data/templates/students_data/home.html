@@ -4,6 +4,14 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
+        <style>
+            .row1{
+                background-color: #f2f2f2;
+            }
+            .row2{
+                background-color: #e6e6e6;
+            }
+        </style>
     </head>
     <body>
         <!-- <div>
@@ -51,7 +59,7 @@
                 {% endfor %}
             </ul>
         </div> -->
-        <div>
+        <!-- <div>
             <h1>Post data</h1>
             <p>Title: {{tittle}}</p>
             <p>Description : {{discription}}</p>
@@ -60,6 +68,65 @@
             <p>Time : {{Time}}</p>
             <p>Month : {{month}}</p>
             <p>Tags : {{tags}}</p>
+        </div> -->
+        <div>
+            <!-- for loop -->
+            <p>Name : {{name}}</p>
+            <p>Age : {{age}}</p>
+            <p>Course : {{course}}</p>
+            <p>Subjects : {{subjects}}</p>
+            <!-- <p>Subjects : {{subjects.0 | title}}</p>
+            <p>Subjects : {{subjects.1 }}</p>
+            <p>Subjects : {{subjects.2}}</p> -->
+            <h1>Subjects use in for loop</h1>
+            <!-- <ul type="a">
+                {% for sub in subjects %}   
+                <li>{{sub }}</li>
+                {% endfor %}
+            </ul> -->
+            <!-- for with empty  -->
+            <!-- <ul>
+                {% for sub in subjects %}
+                <li>{{sub}}</li>
+                {% empty %}
+                <p>No subjects available</p>
+                {% endfor %}
+            </ul> -->
+            <!-- for with if -->
+            <!-- <ul>
+                {% for sub in subjects %}
+                {% if sub != "math" %}
+                <li>{{sub | title}}</li>
+                {% endif %}
+                {% empty %}
+                <p>No subjects available</p>
+                {% endfor %}
+             </ul> -->
+            <!-- forloop variable  -->
+            <!-- forlopp.counter , forloop.first , forloop.last -->
+            <div>
+                <h1>For loop variable</h1>
+                {% for sub in subjects %}
+                <p>{{forloop.counter}} : {{sub |title}}</p>
+                <!-- <p>{{forloop.first}} : {{sub}}</p>
+                <p>{{forloop.last}} : {{sub}}</p> -->
+                {% endfor %}
+            </div>
+
+            <div>
+                <table width="400px" border="1px" cellspacing="0px" cellpadding="10px" style="text-align:center"  >
+                    <tr style="background-color: bisque;">
+                        <th>Subject</th>
+                        <th>Marks</th>
+                    </tr>
+                    {% for sub , mark in marks.items %}
+                    <tr class="{% cycle 'row1' 'row2' %}">
+                        <td>{{sub}}</td>
+                        <td> {{mark}} </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
         </div>
 
 
