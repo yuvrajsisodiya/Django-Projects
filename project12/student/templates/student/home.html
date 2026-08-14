@@ -1,0 +1,17 @@
+    {% extends "student/base.html" %}
+    {% block title %}
+
+    home
+    {% endblock title %}
+
+    {% block content %}
+    <h3>my home page</h3>
+    <!-- by default get -->
+    <form method="post">
+        <!-- csrf stand for [CROSS-SITE REQUEST FORGERY] -->
+         {% csrf_token %}
+        Name : <input type="text" placeholder="enter your name" name="t1"><br></br>
+        Age : <input type="text" placeholder="age" name="t2"><br></br>
+        <input type="submit">
+    </form>
+    {% endblock content %}

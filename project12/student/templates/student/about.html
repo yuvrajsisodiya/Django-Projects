@@ -1,0 +1,21 @@
+{% extends 'student/base.html' %}
+
+{% block title %}
+about
+{% endblock title %}
+
+
+{% block content %}
+<h2>my about</h2>
+<!-- {{students}} -->
+{% regroup students by dept as dept_list %}
+<!-- department name itrate  -->
+{% for dept in dept_list %}
+<h3>{{dept.grouper}}</h3>
+<ul>
+    {% for std in dept.list %}  
+    <li>{{std.name}}</li>
+    {% endfor %}
+</ul>
+{% endfor %}
+{% endblock content %}

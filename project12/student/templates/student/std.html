@@ -1,0 +1,53 @@
+{% extends 'student/base.html' %}
+{% block title %}
+student
+{% endblock title %}
+
+{% block content %}
+<h3>student page</h3>
+<h4>regroup</h4>
+{% regroup std_list by dept as grouped_std %}
+<ul>
+    {% for dept_list in grouped_std %}
+    <li>Department : {{dept_list.grouper}}</li>
+    <ul>
+        {% for student in dept_list.list %}
+        <li>Name : {{student.name}}</li>
+        {% endfor %}
+    </ul>
+    {% endfor %}
+</ul>
+
+<!-- widthratio simple percentage calculation ,graps,charts, progress bar-->
+ <h4>widthratio</h4>
+ <!-- <p>
+    Progress : {% widthratio 50 100 100  %}
+ </p> -->
+ {% for student in std_marks %}
+    <p>{{ student.name }} : {{ student.marks }}</p>
+
+    {% widthratio student.marks 100 100 %}%
+
+{% endfor %}
+
+<!-- spaceless  remove whitespace in html -->
+ {% spaceless %}
+ <h4>spaceless </h4>
+ <div>
+    <span>This is a </span>
+    <span>spaceless eg.   </span>
+ </div>
+ {% endspaceless %}
+<!-- filter block filter jo filtername se suru hota he or end bhi -->
+
+<h4>filter 1.block filter</h4>
+ {% filter upper %}
+ this text will be convert to uppercase
+ {% endfilter%}
+
+ <h4>filter 2.inline filter</h4>
+ <!-- filter + tag unko inline filter bolte he -->
+  {% for student in std_marks %}
+  <p>{{student.name | upper}} {{student.marks | add:1}}</p>
+  {% endfor %}
+{% endblock content %}
