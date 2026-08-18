@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+home
+{% endblock title %}
+
+{% block content %}
+<!-- Home page! -->
+ <div>
+    <img class="w-full h-full object-cover" src="{% static 'images/hero.jpg' %}" alt="Home Image">
+ </div>
+ <div class="bg-gray-200 p-8">
+    <h1 class="text-center py-8 text-2xl font-bold mb-5 bg-blue-600 text-white">Features</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-blue-200 p-4 shadow-md rounded-xl">
+             <img class="w-full h-50 object-fit " src="{% static 'images/project1.png' %}" alt="Project 1">
+            <h2 class="font-bold text-center mt-2">E-commerce Website</h2>
+        </div>
+        <div class="bg-blue-200 p-4 shadow-md rounded-xl">
+             <img class="w-full h-50 object-fit " src="{% static 'images/project2.jfif' %}" alt="Project 2">
+            <h2 class="font-bold text-center mt-2">Portfolio Website</h2>
+        </div>
+        <div class="bg-blue-200 p-4 shadow-md rounded-xl">
+            <img class="w-full h-50 object-fit " src="{% static 'images/project3.jfif' %}" alt="Project 2">
+            <h2 class="font-bold text-center mt-2">ToDo application</h2>
+        </div>
+        <div class="bg-blue-200 p-4 shadow-md rounded-xl">
+            <img class="w-full h-50 object-fit " src="{% static 'images/project4.jfif' %}" alt="Project 2">
+            <h2 class="font-bold text-center mt-2">Food Delivery app</h2>
+        </div>
+    </div>
+ </div>
+{% endblock content %}
