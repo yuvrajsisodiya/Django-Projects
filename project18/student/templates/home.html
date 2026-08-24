@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Student Home</title>
+
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    </head>
+
+    <body class="bg-gray-100 min-h-screen">
+
+        <!-- Header -->
+        <h1 class="bg-amber-300 text-3xl font-bold text-center py-5 shadow-md">
+            Welcome to Student Home Page
+        </h1>
+
+        <!-- Table Container -->
+        <div class="max-w-6xl mx-auto mt-10 px-4">
+
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+
+                <div class="px-6 py-5 border-b">
+                    <h2 class="text-2xl font-bold text-gray-800">
+                        Student Details
+                    </h2>
+                    <p class="text-gray-500 mt-1">
+                        List of all registered students
+                    </p>
+                </div>
+
+                <!-- Table -->
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead class="bg-gray-800 text-white">
+                            <tr>
+                                <th class="px-6 py-4">Name</th>
+                                <th class="px-6 py-4">Age</th>
+                                <th class="px-6 py-4">Email</th>
+                                <th class="px-6 py-4">Course</th>
+                                <th class="px-6 py-4">Fees</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            {% for std in student %}
+                            <tr class="hover:bg-amber-50 transition duration-200">
+                                <td class="px-6 py-4 font-semibold text-gray-800">
+                                    {{ std.name|upper }}
+                                </td>
+                                <td class="px-6 py-4 text-gray-600">
+                                    {{ std.age }}
+                                </td>
+                                <td class="px-6 py-4 text-blue-600">
+                                    {{ std.email }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">
+                                        {{ std.course }}
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 text-green-600 ">
+                                    ₹{{ std.fee }}
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="5" class="px-6 py-8 text-center text-gray-500">
+                                    No students found.
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
