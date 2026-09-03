@@ -2,9 +2,9 @@ from django.shortcuts import render,redirect , get_object_or_404
 from django.urls import reverse
 from .models import Task
 # Create your views here.
-def task_list(request):
+def task_show(request):
     task=Task.objects.all().order_by('-create_date')
-    return render(request,'todo/task_list.html',{'tasks':task})
+    return render(request,'todo/task_show.html',{'tasks':task})
 
 def task_created(request):
     if request.method=='POST':
@@ -42,8 +42,10 @@ def task_delete(reuquest):
         return redirect(reverse('todo:task_list'))
     return render(request,'todo/task_succes_delete.html',{'task':task})
 
-def task_toggle(request,pk):
-    task = get_object_or_404(Task , pk=pk)
+def task_toggle(request , id):
+    # task = Task.objects.get(id=id)
+    task.get_object_or_404(task , id=id)
     task.completed = not task.completed
+    
     task.save()
-    return redirect(reverse('todo:task_list'))
+    return redirect(reverse('todo:task_show'))
