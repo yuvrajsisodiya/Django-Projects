@@ -1,0 +1,11 @@
+{% extends "todo/base.html" %}
+{% block content %}
+<h1 class="text-2xl font-bold  mb-5">Delete Task</h1>
+<h1 class="text-2xl font-bold text-green-500">Are you sure you want to delete the task <span class="text-2xl font-semibold text-red-500">" {{ task.title }}" ?</span></h1>
+<form method="post" action="{% url 'todo:task_delete' task.pk %}">
+    {% csrf_token %}
+   <div class="flex gap-15 mt-10">
+    <button type="submit" class="bg-red-500 text-white px-4 py-3 rounded hover:bg-red-600 ">Yes, Delete</button>
+    <a href="{% url 'todo:task_show' %}" class="bg-gray-500 text-white px-6 py-3  rounded hover:bg-gray-600">Cancel</a>
+   </div>
+{% endblock content %}

@@ -7,16 +7,16 @@
    
 <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body>
+<body class="bg-pink-200">
    <div class="w-full">
-     <nav class="bg-gray-200 px-15 py-4 mb-4 flex justify-between items-center">
+     <nav class="bg-red-500 px-15 py-4 mb-4 flex justify-between items-center">
         
             <a class="text-gray-800 hover:text-blue-700 no-underline text-2xl" href="{% url 'todo:task_show' %}">TODO APP</a>
-            <a class=" no-underline bg-blue-500 text-white rounded py-2 px-2 hover:bg-blue-400" href="{% url 'todo:task_created' %}">ADD TASK</a>
+            <a class=" no-underline bg-blue-500 text-white rounded py-2 px-2 hover:bg-blue-400" href="{% url 'todo:add_task' %}">ADD TASK</a>
         
     </nav>
    </div>
-    <div class="">
+    <div class="px-20">
         {% block content %}
         
         {% endblock content %}

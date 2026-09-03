@@ -6,46 +6,39 @@ def task_show(request):
     task=Task.objects.all().order_by('-create_date')
     return render(request,'todo/task_show.html',{'tasks':task})
 
-def task_created(request):
+def add_task(request):
     if request.method=='POST':
-        title = request.POST.get('title','').strip()
-        description = request.POST.get('description','').strip()
-        if title:
-            Task.objects.create(
-                title=title,
-                description=description
-            )
-            return redirect(reverse('todo:task_list'))
-        error = "Title cannot be empty"
-        return render(request,'todo/task_from.html',{'error':error})
-    return render(request,'todo/task_from.html')
+        title=request.POST.get('title')
+        discription=request.POST.get('description')
+        if title and discription:
+            task=Task.objects.create(title=title,description=discription)
+            return redirect(reverse('todo:task_show'))
+        return render(request,'todo/add_task.html',{'error_msg':'Please fill in all fields.'}) 
+    return render(request,'todo/add_task.html')
 
-def task_update(request,pk):
-    task=get_object_or_404(Task , pk=pk)
-    if request.mothod =='POST':
-        title = request.POST.get('title','').strip()
-        description = request.POST.get('description','').strip()
-        completed = request.POST.get('completed') =='on'
-
-        if title:
-            task.title = title
-            task.description =  description
-            task.completed = completed
-            task.save()
-            return redirect(reverse('todo:task_list'))
-        return render(request,'todo/task_from.html',{'task':task})
-
-def task_delete(reuquest):
-    task = get_object_or_404(Task ,pk)
+def task_delete(request,pk ):
+    task = get_object_or_404(Task, pk=pk)
     if request.method == 'POST':
         task.delete()
-        return redirect(reverse('todo:task_list'))
-    return render(request,'todo/task_succes_delete.html',{'task':task})
-
-def task_toggle(request , id):
+        return redirect(reverse('todo:task_show'))  
+    return render(request, 'todo/confrom_del.html', {'task': task})
+ 
+def task_toggle(request , pk):
     # task = Task.objects.get(id=id)
-    task.get_object_or_404(task , id=id)
+    task = get_object_or_404(Task , pk=pk)
     task.completed = not task.completed
-    
     task.save()
     return redirect(reverse('todo:task_show'))
+
+def task_edit(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        description = request.POST.get('description')
+        if title and description:
+            task.title = title
+            task.description = description
+            task.save()
+            return redirect(reverse('todo:task_show'))
+        return render(request, 'todo/add_task.html', {'task': task})
+    return render(request, 'todo/add_task.html', {'task': task})

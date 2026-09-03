@@ -1,0 +1,29 @@
+{% extends "todo/base.html" %}
+{%block content %}
+
+{% comment %} <h2>hello create task page render succesfully</h2> {% endcomment %}
+{% if task %}
+<h1 class="text-2xl font-bold mb-4">Edit Task</h1>
+{% else %}
+<h1 class="text-2xl font-bold mb-4">Add Task</h1>
+{% endif %}
+
+{% if error_msg %}
+    <p class="text-red-500 mb-4">{{ error_msg }}</p>
+{% endif %}
+<form method="post" class="mt-4" ">
+    {% csrf_token %}
+    <div class="mb-4">
+        <label for="title" class="block text-gray-700 font-bold mb-2">Title</label>
+        <input type="text" value="{{ task.title }}" name="title" class="w-full border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+    </div>
+    <div class="mb-4">
+        <label for="description" class="block text-gray-700 font-bold mb-2">Description</label>
+        <textarea  name="description" class="w-full border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">{{ task.description }}</textarea>
+    </div>
+    <button  class="bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600" type="submit">Save</button>
+  
+        <a href="{% url 'todo:task_show' %}" class="bg-gray-500 text-white px-4 py-1 rounded hover:bg-gray-600">Cancel</a>
+</form>
+
+{% endblock %}
