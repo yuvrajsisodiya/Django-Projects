@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="text-2xl font-bold  mb-5">Delete Task</h1>
+<h2>Are you sure you want to delete the student "{{ student.name }}"?</h2>
+<form method="post" class="mt-4"> 
+{% comment %} form jase he submit  hoga vase delete call ho jayga {% endcomment %}
+    {% csrf_token %}
+    <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Yes, Delete</button>
+    <a href="{% url 'studentapp:std_list' %}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded ml-2">Cancel</a>
+</form>
+{% endblock content %}

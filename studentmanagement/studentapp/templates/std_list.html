@@ -6,21 +6,20 @@
         <tr class="">
             <th class="px-20 text-2xl py-3 text-start">Name</th>
              <th class="px-20 text-2xl py-3 text-start">Addmition Date</th>
+             <th class="px-20 text-2xl py-3 text-start">Action</th>
             
         </tr>
     </thead>
     <tbody>
         {% for student in students %}
-        <tr class="bg-gray-300 px-3 py-3 ">
-            
-            
+        <tr class=" px-3 py-3 ">
             <td class="px-20 py-3 text-xl">
             <a href="{% url 'studentapp:std_detail' student.id %}" class="text-blue-500">{{ student.name }}</a>
             </td>
              <td class="px-20 py-3 text-md">{{ student.date }}</td>
-            <td>
-            <a href="#" class="text-blue-500 hover:text-blue-700 border border-blue-500 hover:bg-blue-500 hover:text-white px-2 py-1 rounded">Edit</a>
-            <a href="#" class="text-red-500 hover:text-red-700 border border-red-500 hover:bg-red-500 hover:text-white px-2 py-1 rounded">Delete</a>
+            <td class="px-20 py-3 text-md">
+            <a href="{% url 'studentapp:std_edit' student.id %}" class="text-blue-500 hover:text-blue-700 border border-blue-500 hover:bg-blue-500 hover:text-white px-2 py-1 rounded">Edit</a>
+            <a href="{% url 'studentapp:std_delete' student.id %}" class="text-red-500 hover:text-red-700 border border-red-500 hover:bg-red-500 hover:text-white px-2 py-1 rounded">Delete</a>
             </td>
             
         </tr>
