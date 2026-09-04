@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>std-list</title>
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-blue-50">
+   <div>
+     <nav class="bg-red-200 px-13 py-4 flex justify-between items-center mb-4 text-2xl font-bold shadow-md">
+        
+            <a class="text-gray-800 text-3xl" href="{% url 'studentapp:std_list' %}">Student Dashboard</a>
+            <a class="bg-blue-500 hover:bg-blue-700 text-white border-none  px-2 py-1 rounded" href="{% url 'studentapp:add_std' %}">Add Student</a>
+    </nav>
+   </div>
+    <div class="container mx-auto px-2">
+        {% block content %}
+    {% endblock %}  
+    </div>
+</body>
+</html>

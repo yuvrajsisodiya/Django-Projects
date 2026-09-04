@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 class="text-2xl font-bold mb-4">Student Details</h1>
+
+<table class="table-auto border-collapse border border-gray-400 w-full max-w-lg">
+<tr>
+        <th class="border border-gray-400 px-4 py-2 text-left bg-gray-200">Name</th>
+        <td class="border border-gray-400 px-4 py-2 bg-blue-50">{{ student.name }}</td>
+ </tr>
+<tr>
+    <th class="border border-gray-400 px-4 py-2 text-left bg-gray-200">Course</th>
+    <td class="border border-gray-400 px-4 py-2 bg-blue-50">{{ student.course }}</td>
+</tr>
+
+<tr>
+    <th class="border border-gray-400 px-4 py-2 text-left bg-gray-200">Email</th>
+    <td class="border border-gray-400 px-4 py-2 bg-blue-50  ">{{ student.email }}</td>
+</tr>
+
+<tr>
+    <th class="border border-gray-400 px-4 py-2 text-left bg-gray-200">Age</th>
+    <td class="border border-gray-400 px-4 py-2 bg-blue-50  ">{{ student.age }}</td>
+</tr>
+
+</table>  
+<div class="mt-4">
+    <a href="{% url 'studentapp:std_list' %}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-51 rounded ">Back to Home</a>
+</div>
+</div>
+{% endblock %}
