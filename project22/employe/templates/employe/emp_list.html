@@ -1,0 +1,77 @@
+{% extends "employe/base.html" %}
+
+{% block content %}
+
+<h1 class="font-bold text-2xl mb-8">
+    Employe List
+</h1>
+
+<div class="overflow-x-auto">
+
+    <table class="w-full border-collapse bg-white shadow-lg rounded-lg overflow-hidden">
+
+       
+        <thead class="bg-gray-800 text-white">
+            <tr>
+               
+                <th class="px-6 py-3 text-center">Name</th>
+               
+                <th class="px-6 py-3 text-center">Action</th>
+            </tr>
+        </thead>
+
+    
+        <tbody>
+
+            {% for emp in employes %}
+
+            <tr class="border-b hover:bg-gray-100">
+
+        
+                <td class="px-6 py-4 font-semibold text-center">
+                    <a href="{% url 'employe:emp_details' emp.id %}"
+                       class="text-blue-600 hover:text-blue-800">
+                        {{ emp.name }}
+                    </a>
+                </td>
+                <td class="px-6 py-4">
+                    <div class="flex justify-center gap-2">
+
+                   
+                        <a href="{% url 'employe:emp_update' emp.id %}"
+                           class="bg-blue-500 hover:bg-blue-700 text-white px-3 py-1 rounded">
+                            Edit
+                        </a>
+
+                        <a href="{% url 'employe:emp_delete' emp.id %}"
+                           class="bg-red-500 hover:bg-red-700 text-white px-3 py-1 rounded">
+                            Delete
+                        </a>
+
+                         <a href="{% url 'employe:emp_details' emp.id %}"
+                           class="bg-blue-500 hover:bg-blue-700 text-white px-3 py-1 rounded">
+                            More Details →
+                        </a>
+
+                    </div>
+                </td>
+
+            </tr>
+
+            {% empty %}
+
+            <tr>
+                <td colspan="5" class="text-center py-6 text-gray-500">
+                    No Employees Found
+                </td>
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+{% endblock content %}

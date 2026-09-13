@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Base file</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+<body class="bg-gray-100 min-h-screen">
+    <nav class="bg-blue-600 shadow-lg">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <h1 class="text-2xl font-bold text-white">
+                    Employee Management
+                </h1>
+                <ul class="flex items-center space-x-3">
+                    <li>
+                    {% comment %} {% url 'emp_list' %} {% endcomment %}
+                        <a href="{% url 'employe:emp_list' %}"
+                           class="bg-white text-black px-4 py-2 font-bold rounded hover:bg-gray-300 transition duration-200">
+                            Employee List
+                        </a>
+                    </li>
+                    <li>
+                    {% comment %} {% url 'emp_create' %} {% endcomment %}
+                        <a href="{% url 'employe:emp_create' %}"
+                           class="bg-white text-black px-4 py-2 font-bold rounded hover:bg-gray-300 transition duration-200">
+                            Create Employee
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-6 py-8">
+
+        {% block content %}
+
+        {% endblock %}
+
+    </main>
+
+</body>
+
+</html>
