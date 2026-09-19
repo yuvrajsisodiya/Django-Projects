@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %} My Blog website {% endblock title %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class= "bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg">
+      <div class="max-w-6xl mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <!-- Logo -->
+          <a href="{% url 'post_list' %}" class="text-2xl font-bold">
+            📝 My Blog
+          </a>
+          <!-- Navigation -->
+          <div class="flex items-center gap-3">
+            <!-- Post -->
+            <a
+                href="{% url 'post_list' %}"
+                class="bg-white text-indigo-600 px-4 py-2 rounded-lg font-semibold hover:bg-gray-300 transition trean"
+            >
+             Posts
+
+            </a>
+
+           
+            <!-- Create Post -->
+            <a
+              href="{% url 'post_create' %}"
+              class="bg-white text-indigo-600 px-4 py-2 rounded-lg font-semibold hover:bg-gray-300 transition trean"
+            >
+              + Create Post
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    {% block content %} {% endblock content %}
+  </body>
+</html>
