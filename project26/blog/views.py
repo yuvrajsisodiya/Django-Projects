@@ -7,7 +7,7 @@ from django.core.paginator import Paginator
 
 def post_list(request):
     posts = Post.objects.all()
-    paginator = Paginator(posts , 4)
+    paginator = Paginator(posts , 2)
     page_num = request.GET.get('page')
     page_obj = paginator.get_page(page_num)
     return render(request , 'post_list.html' , {'page_obj':page_obj})
