@@ -1,0 +1,91 @@
+
+{% extends "base.html" %}
+
+{% block title %}
+Image Display
+{% endblock title %}
+
+{% block content %}
+
+<div class="text-center mb-10">
+
+    <h2 class="text-4xl font-bold text-gray-800">
+        Uploaded Images
+    </h2>
+
+    <p class="text-gray-500 mt-2">
+        All uploaded student images are displayed here.
+    </p>
+
+</div>
+
+
+{% if files %}
+
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+    {% for file in files %}
+
+    <div class="bg-white rounded-2xl shadow-md overflow-hidden
+                hover:shadow-xl hover:-translate-y-1
+                transition duration-300">
+
+        <!-- Image -->
+        <div class="h-56 bg-gray-200 overflow-hidden">
+
+            <img
+                src="{{ file.image.url }}"
+                alt="{{ file.name }}"
+                class="w-full h-full object-cover hover:scale-105 transition duration-300"
+            >
+
+        </div>
+
+
+        <!-- Card Content -->
+        <div class="p-5">
+
+            <h3 class="text-lg font-bold text-gray-800 truncate">
+                {{ file.name }}
+            </h3>
+
+            <p class="text-sm text-gray-500 mt-1">
+                Uploaded Image
+            </p>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% else %}
+
+<div class="bg-white rounded-2xl shadow-md p-10 text-center">
+
+    <div class="text-6xl mb-4">
+        🖼️
+    </div>
+
+    <h3 class="text-2xl font-bold text-gray-700">
+        No Images Uploaded
+    </h3>
+
+    <p class="text-gray-500 mt-2">
+        Upload your first image to see it here.
+    </p>
+
+    <a href="{% url 'upload_file' %}"
+       class="inline-block mt-6 bg-indigo-600 text-white
+              px-6 py-3 rounded-lg font-semibold
+              hover:bg-indigo-700 transition">
+        Upload Image
+    </a>
+
+</div>
+
+{% endif %}
+
+{% endblock content %}
