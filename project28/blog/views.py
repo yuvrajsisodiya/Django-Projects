@@ -3,7 +3,7 @@ from django.shortcuts import render
 # function base view
 # def post_list_view(request):
 #     return render(request,'blog/post_list.html')
-
+from .forms import PostForm
 # class base view
 from .models import Post
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView 
@@ -20,14 +20,15 @@ class PostDetailView(DetailView):
 
 class PostCreateView(CreateView):
     model = Post
+    form_class = PostForm
     template_name = 'blog/post_form.html'
-    fields = ['title' , 'content']
+    # fields = ['title' , 'content']
 
 class PostUpdateView(UpdateView):
     model = Post
     template_name = 'blog/post_form.html'
-    fields = ['title' , 'content']
-
+    # fields = ['title' , 'content']
+    form_class = PostForm
 class PostDeleteView(DeleteView):
     model = Post
     template_name = 'blog/post_confrom_delete.html'

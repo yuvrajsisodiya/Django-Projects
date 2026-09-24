@@ -1,18 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post details</title>
-</head>
-<body>
-    <h1>Post Details</h1>
-    <h1>{{ post.title }}</h1>
-    <p>{{ post.content }}</p>
-    <br>
-    <a href="{% url 'post_update' post.pk %}">Edit</a>
-    <a href="{% url 'post_delete' post.pk %}">Delete</a>
-    <br><br>
-    <a href="{% url 'post_list' %}">Back to List</a>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Post Details</title> <!-- Tailwind CSS -->
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body class="bg-gray-100 min-h-screen"> <!-- Main Container -->
+        <div class="max-w-4xl mx-auto px-5 py-10"> <!-- Page Heading -->
+            <h1 class="text-4xl font-extrabold text-gray-800 mb-8"> Post Details </h1> <!-- Post Container -->
+            <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-8"> <!-- Title -->
+                <div class="mb-6">
+                    <h2 class="text-3xl font-bold text-gray-800"> {{ post.title }} </h2>
+                    <div class="w-20 h-1 bg-blue-600 rounded-full mt-3"></div>
+                </div> <!-- Content -->
+                <div class="mb-8">
+                    <p class="text-gray-600 text-lg leading-8 whitespace-pre-line"> {{ post.content }} </p>
+                </div> <!-- Edit & Delete Buttons -->
+                <div class="flex gap-3 pt-6 border-t border-gray-200"> <!-- Edit --> <a
+                        href="{% url 'post_update' post.pk %}"
+                        class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-6 py-2.5 rounded-lg shadow-md transition duration-300">
+                        Edit </a> <!-- Delete --> <a href="{% url 'post_delete' post.pk %}"
+                        class="bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-2.5 rounded-lg shadow-md transition duration-300">
+                        Delete </a> </div>
+            </div> <!-- Back to List Button -->
+            <div class="mt-6"> <a href="{% url 'post_list' %}"
+                    class="inline-flex items-center gap-2 bg-gray-700 hover:bg-gray-800 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition duration-300">
+                    ← Back to List </a> </div>
+        </div>
+    </body>
 </html>
