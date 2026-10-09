@@ -2,6 +2,7 @@ from django.db.models.signals import post_save , pre_save
 from django.dispatch import receiver
 from django.core.mail import send_mail
 from .models import User
+
 @receiver(post_save , sender=User)
 def welcome_send_email(sender , instance , created , **kwargs):
     if created:
