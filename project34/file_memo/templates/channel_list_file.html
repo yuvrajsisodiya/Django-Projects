@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 >Channel List</h1>
+
+    {% for channel in channels %}
+        <h2>{{ channel.name }}</h2>
+        <p>{{ channel.description }}</p>
+        <p>Subscribers: {{ channel.subscribers }}</p>
+    {% endfor %}
+</body>
+</html>

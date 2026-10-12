@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'cache_memo',
+    'file_memo',
 ]
 
 MIDDLEWARE = [
@@ -79,11 +80,19 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+# local cache memorey
+# CACHES = {
+#     "default": {
+#         "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+#         "LOCATION": "youtube_cache",
+#         "TIMEOUT": 300  # Cache timeout in seconds (5 minutes)
+#     }
+# }
 CACHES = {
     "default": {
-        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
-        "LOCATION": "youtube_cache",
-        "TIMEOUT": 300  # Cache timeout in seconds (5 minutes)
+        "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
+        "LOCATION": BASE_DIR / "my_cache_files",  # Directory to store cache files
+        "TIMEOUT": 60,  # Cache timeout in seconds (5 minutes)
     }
 }
 
