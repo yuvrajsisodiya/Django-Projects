@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Student
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework import status
 from .serializers import StudentSerializer
 # Create your views here.\
 
@@ -31,7 +32,18 @@ def update_student(request , id):
         return Response(status = status.HTTP_404_NOT_FOUND) # agar data exist nahi karta to 404 error bhejna
     if request.method == 'PUT':
         serializer = StudentSerializer(student , data=request.data) # data ko serialize karna
+    else:
+        serializer = StudentSerializer(student , data=request.data , partial=True) # patch data ko serialize karna
     if serializer.is_valid(): # data valid hai ya nahi check karna
         serializer.save() # data ko save karna
         return Response(serializer.data) # serialized data ko response me bhejna    
     return Response(serializer.errors , status=400) # agar data valid nahi hai to error message bhejna
+
+@api_view(['DELETE'])
+def delete_student(request , id):
+    try:
+        students = Student.objects.get(id=id) # database se data fetch karna
+    except Student.DoesNotExist:
+         return Response(status=status.HTTP_404_NOT_FOUND) # agar data exist nahi karta to 404 error bhejna
+    students.delete() # data ko delete karna
+    return Response({"message": "Student deleted successfully"},status = status.HTTP_204_NO_CONTENT ) # agar data delete ho jata hai to 204 no content bhejna
